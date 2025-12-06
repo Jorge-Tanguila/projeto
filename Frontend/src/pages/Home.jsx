@@ -1,9 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import avatar from '../assets/my_avatar2.png'
 
 
 
 export default function PremiumPortfolio() {
+  const my_github= 'https://github.com/Jorge-Tanguila'
   const projects = [
     {
       id: 1,
@@ -31,7 +33,7 @@ export default function PremiumPortfolio() {
   const stats = [
     { label: 'Projetos', value: '24' },
     { label: 'Clientes', value: '18' },
-    { label: 'Tempo médio de entrega', value: '5 dias' }
+    { label: 'Tempo médio de entrega', value: '9 dias' }
   ]
 
   return (
@@ -80,9 +82,9 @@ export default function PremiumPortfolio() {
         <motion.div initial={{ scale: 0.98, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6 }} className="w-full md:w-1/2">
           <div className="rounded-3xl p-6 bg-gradient-to-br from-white/6 to-white/3 border border-white/6 shadow-xl">
             <div className="flex items-center gap-4">
-              <img alt="avatar" src="https://images.unsplash.com/photo-1545996124-1b1a6a52f7b6?auto=format&fit=crop&w=400&q=60" className="w-20 h-20 rounded-2xl object-cover" />
+              <img alt="avatar" src={avatar} className="w-20 h-20 rounded-2xl object-cover" />
               <div>
-                <div className="font-semibold text-lg">Teu Nome</div>
+                <div className="font-semibold text-lg">Jorge-Tanguila</div>
                 <div className="text-sm text-slate-300">Frontend & Full-Stack Developer</div>
               </div>
             </div>
@@ -100,7 +102,7 @@ export default function PremiumPortfolio() {
 
             <div className="mt-6 flex gap-3">
               <a className="flex-1 text-center py-2 rounded-lg bg-cyan-500 hover:bg-cyan-600">Ver CV</a>
-              <a className="flex-1 text-center py-2 rounded-lg border border-white/10">GitHub</a>
+              <a className="flex-1 text-center py-2 rounded-lg border border-white/10" href={my_github}>GitHub</a>
             </div>
           </div>
         </motion.div>
@@ -136,35 +138,51 @@ export default function PremiumPortfolio() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="max-w-6xl mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold">Serviços</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
-            <div className="font-semibold">Landing Pages</div>
-            <div className="text-slate-300 mt-2 text-sm">Landing pages otimizadas para conversão e carregamento rápido.</div>
-            <div className="mt-4 text-sm font-bold">A partir de 50 USD</div>
-          </div>
+<section id="services" className="max-w-6xl mx-auto px-6 py-12">
+  <h2 className="text-2xl font-bold">Serviços</h2>
+  <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
 
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
-            <div className="font-semibold">Dashboards & Admins</div>
-            <div className="text-slate-300 mt-2 text-sm">Painéis com filtros, gráficos e integrações.</div>
-            <div className="mt-4 text-sm font-bold">A partir de 120 USD</div>
-          </div>
+    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+      <div className="font-semibold">Front-end & UI</div>
+      <div className="text-slate-300 mt-2 text-sm">
+        Interfaces modernas, animadas e responsivas usando React, Tailwind e Framer Motion.
+      </div>
+      <div className="mt-4 text-sm font-bold">A partir de 55.000 KZ/60 USD</div>
+    </div>
 
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
-            <div className="font-semibold">Automação & Scripts</div>
-            <div className="text-slate-300 mt-2 text-sm">Automatização de processos manuais e integração com APIs.</div>
-            <div className="mt-4 text-sm font-bold">A partir de 40 USD</div>
-          </div>
-        </div>
-      </section>
+    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+      <div className="font-semibold">Back-end & APIs</div>
+      <div className="text-slate-300 mt-2 text-sm">
+        Servidores escaláveis, autenticação, bases de dados e APIs seguras em Python e Node.js.
+      </div>
+      <div className="mt-4 text-sm font-bold">A partir de 100.000 KZ/120 USD</div>
+    </div>
+
+    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+      <div className="font-semibold">IA & Redes Neurais</div>
+      <div className="text-slate-300 mt-2 text-sm">
+        Implementação de modelos de IA, automações inteligentes e integração com RNAs.
+      </div>
+      <div className="mt-4 text-sm font-bold">A partir de 150.000 KZ/150 USD</div>
+    </div>
+
+    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+      <div className="font-semibold">Aulas de Programação</div>
+      <div className="text-slate-300 mt-2 text-sm">
+        Aulas particulares do nível básico ao profissional: lógica, web, React e back-end.
+      </div>
+      <div className="mt-4 text-sm font-bold">A partir de 3.00 KZ/h | 4 USD/h</div>
+    </div>
+
+  </div>
+</section>
 
       {/* ABOUT */}
       <section id="about" className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-2xl font-bold">Sobre Mim</h2>
-            <p className="text-slate-300 mt-2">Sou um desenvolvedor apaixonado por criar interfaces limpas, aplicações performáticas e experiências que encantam o utilizador. Trabalho com foco em resultados: conversão, retenção e velocidade.</p>
+            <p className="text-slate-300 mt-2">Sou um desenvolvedor full-stack focado em criar interfaces limpas, back-ends robustos e aplicações rápidas. Trabalho orientado a resultados — conversão, retenção e performance — e tenho experiência em IA com Redes Neurais Artificiais. Também dou aulas particulares de programação, desde o nível básico até o profissional.</p>
 
             <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-300">
               <li>• UX-first development</li>
@@ -174,7 +192,7 @@ export default function PremiumPortfolio() {
             </ul>
 
             <div className="mt-6 flex gap-3">
-              <a className="px-4 py-2 rounded bg-cyan-500">Ver GitHub</a>
+              <a className="px-4 py-2 rounded bg-cyan-500" href={my_github}>Ver GitHub</a>
               <a className="px-4 py-2 rounded border border-white/10">Baixar CV</a>
             </div>
           </div>
@@ -183,7 +201,7 @@ export default function PremiumPortfolio() {
             <div className="font-semibold">Testemunhos</div>
             <div className="mt-4 space-y-4">
               <blockquote className="text-slate-300 text-sm">“Rápido, comunicativo e entregou tudo no prazo. Recomendo para qualquer startup.” — Maria, CEO</blockquote>
-              <blockquote className="text-slate-300 text-sm">“O painel aumentou a produtividade da nossa equipa em 40%.” — João, COO</blockquote>
+              <blockquote className="text-slate-300 text-sm">“O painel aumentou a produtividade da nossa equipa em 40%.” — João, CEO</blockquote>
             </div>
           </div>
         </div>
@@ -202,7 +220,7 @@ export default function PremiumPortfolio() {
             <textarea className="p-3 rounded bg-transparent border border-white/6 md:col-span-2" placeholder="Descrição rápida do projeto" rows={4} />
             <div className="md:col-span-2 flex items-center gap-3">
               <button className="px-5 py-2 rounded bg-indigo-600">Enviar mensagem</button>
-              <span className="text-slate-300 text-sm">Ou me chama no WhatsApp: +244 9XX XXX XXX</span>
+              <span className="text-slate-300 text-sm">Ou me chama no WhatsApp: +244 959 871 037</span>
             </div>
           </form>
         </div>
