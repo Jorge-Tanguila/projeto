@@ -212,17 +212,17 @@ export default function PremiumPortfolio() {
         <div className="p-8 rounded-2xl bg-gradient-to-br from-white/4 to-white/6 border border-white/6">
           <h3 className="text-xl font-semibold">Contacta-me</h3>
           <p className="text-slate-300 mt-2">Envie uma mensagem com uma breve descrição do projecto e eu respondo em até 24h.</p>
-
-          <form className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input className="p-3 rounded bg-transparent border border-white/6" placeholder="Nome" />
-            <input className="p-3 rounded bg-transparent border border-white/6" placeholder="Email" />
-            <input className="p-3 rounded bg-transparent border border-white/6 md:col-span-2" placeholder="Assunto" />
-            <textarea className="p-3 rounded bg-transparent border border-white/6 md:col-span-2" placeholder="Descrição rápida do projeto" rows={4} />
+<form className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" name="name" required className="p-3 rounded bg-transparent border border-white/6" placeholder="Nome *" />
+            <input type="email" name="email" required className="p-3 rounded bg-transparent border border-white/6" placeholder="Email *" />
+            <input type="text" name="subject" className="p-3 rounded bg-transparent border border-white/6 md:col-span-2" placeholder="Assunto" />
+            <textarea name="message" required className="p-3 rounded bg-transparent border border-white/6 md:col-span-2" placeholder="Mensagem *" rows={4} />
             <div className="md:col-span-2 flex items-center gap-3">
-              <button className="px-5 py-2 rounded bg-indigo-600">Enviar mensagem</button>
+              <button type="submit" className="px-5 py-2 rounded bg-indigo-600 hover:bg-indigo-700 transition-colors">Enviar mensagem</button>
               <span className="text-slate-300 text-sm">Ou me chama no WhatsApp: +244 959 871 037</span>
             </div>
           </form>
+
         </div>
       </section>
 
