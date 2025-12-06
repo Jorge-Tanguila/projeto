@@ -45,7 +45,7 @@ export default function PremiumPortfolio() {
           <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-400 to-cyan-300 flex items-center justify-center text-slate-900 font-bold">JT</div>
           <div>
             <div className="font-semibold">Jorge-Tanguila</div>
-            <div className="text-xs text-slate-300">Desenvolvedor • Frontend • Soluções Rápidas</div>
+            <div className="text-xs text-slate-300">Desenvolvedor • FullStack • Soluções Rápidas</div>
           </div>
         </div>
         <div className="hidden md:flex items-center gap-6 text-slate-200">
