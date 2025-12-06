@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import avatar from '../assets/my_avatar2.png'
+import CV from '../assets/Curriculo_Jorge_Tanguila.pdf'
 
 
 
@@ -101,7 +102,7 @@ export default function PremiumPortfolio() {
             </div>
 
             <div className="mt-6 flex gap-3">
-              <a className="flex-1 text-center py-2 rounded-lg bg-cyan-500 hover:bg-cyan-600">Ver CV</a>
+              <a className="flex-1 text-center py-2 rounded-lg bg-cyan-500 hover:bg-cyan-600" href={CV}>Ver CV</a>
               <a className="flex-1 text-center py-2 rounded-lg border border-white/10" href={my_github}>GitHub</a>
             </div>
           </div>
@@ -171,7 +172,7 @@ export default function PremiumPortfolio() {
       <div className="text-slate-300 mt-2 text-sm">
         Aulas particulares do nível básico ao profissional: lógica, web, React e back-end.
       </div>
-      <div className="mt-4 text-sm font-bold">A partir de 3.00 KZ/h | 4 USD/h</div>
+      <div className="mt-4 text-sm font-bold">A partir de 3.000 KZ/h | 4 USD/h</div>
     </div>
 
   </div>
@@ -193,7 +194,7 @@ export default function PremiumPortfolio() {
 
             <div className="mt-6 flex gap-3">
               <a className="px-4 py-2 rounded bg-cyan-500" href={my_github}>Ver GitHub</a>
-              <a className="px-4 py-2 rounded border border-white/10">Baixar CV</a>
+              <a className="px-4 py-2 rounded border border-white/10" href={CV}>Baixar CV</a>
             </div>
           </div>
 
