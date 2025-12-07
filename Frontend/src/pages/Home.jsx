@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import avatar from '../assets/my_avatar2.png'
-import CV from '../assets/Curriculo_Jorge_Tanguila.pdf'
-
-
+//import CV from '../assets/Curriculo_Jorge_Tanguila.pdf'
 
 export default function PremiumPortfolio() {
-  const my_github= 'https://github.com/Jorge-Tanguila'
+  
+  const [formStatus, setFormStatus] = useState({ type: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const CV= "https://drive.google.com/file/d/1Sd5jPi7KScjN36RCWRU0NJvsPiFuZHoR/view?usp=drivesdk"
+  const my_github = 'https://github.com/Jorge-Tanguila'
+  
   const projects = [
     {
       id: 1,
@@ -36,6 +39,56 @@ export default function PremiumPortfolio() {
     { label: 'Clientes', value: '18' },
     { label: 'Tempo médio de entrega', value: '9 dias' }
   ]
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setFormStatus({ type: '', message: '' })
+
+    const formData = new FormData(e.target)
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message")
+    }
+
+    try {
+      const res = await fetch("http://localhost:5000/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+
+      if (!res.ok) {
+        throw new Error('Erro na comunicação com o servidor')
+      }
+
+      const result = await res.json()
+
+      if (result.success) {
+        setFormStatus({ 
+          type: 'success', 
+          message: '✓ Mensagem enviada com sucesso! Respondo em até 24h.' 
+        })
+        e.target.reset()
+      } else {
+        setFormStatus({ 
+          type: 'error', 
+          message: result.message || 'Erro ao enviar mensagem' 
+        })
+      }
+    } catch (error) {
+      console.error(error)
+      setFormStatus({ 
+        type: 'error', 
+        message: 'Erro ao conectar com o servidor. Verifique sua conexão.' 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-slate-900 via-slate-800 to-indigo-900 text-slate-100 antialiased">
@@ -78,8 +131,7 @@ export default function PremiumPortfolio() {
           </div>
         </motion.div>
 
-
-{/*avatar-apresentação*/}
+        {/* AVATAR-APRESENTAÇÃO */}
         <motion.div initial={{ scale: 0.98, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6 }} className="w-full md:w-1/2">
           <div className="rounded-3xl p-6 bg-gradient-to-br from-white/6 to-white/3 border border-white/6 shadow-xl">
             <div className="flex items-center gap-4">
@@ -139,44 +191,44 @@ export default function PremiumPortfolio() {
       </section>
 
       {/* SERVICES */}
-<section id="services" className="max-w-6xl mx-auto px-6 py-12">
-  <h2 className="text-2xl font-bold">Serviços</h2>
-  <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section id="services" className="max-w-6xl mx-auto px-6 py-12">
+        <h2 className="text-2xl font-bold">Serviços</h2>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
 
-    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
-      <div className="font-semibold">Front-end & UI</div>
-      <div className="text-slate-300 mt-2 text-sm">
-        Interfaces modernas, animadas e responsivas usando React, Tailwind e Framer Motion.
-      </div>
-      <div className="mt-4 text-sm font-bold">A partir de 55.000 KZ/60 USD</div>
-    </div>
+          <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+            <div className="font-semibold">Front-end & UI</div>
+            <div className="text-slate-300 mt-2 text-sm">
+              Interfaces modernas, animadas e responsivas usando React, Tailwind e Framer Motion.
+            </div>
+            <div className="mt-4 text-sm font-bold">A partir de 55.000 KZ/60 USD</div>
+          </div>
 
-    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
-      <div className="font-semibold">Back-end & APIs</div>
-      <div className="text-slate-300 mt-2 text-sm">
-        Servidores escaláveis, autenticação, bases de dados e APIs seguras em Python e Node.js.
-      </div>
-      <div className="mt-4 text-sm font-bold">A partir de 100.000 KZ/120 USD</div>
-    </div>
+          <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+            <div className="font-semibold">Back-end & APIs</div>
+            <div className="text-slate-300 mt-2 text-sm">
+              Servidores escaláveis, autenticação, bases de dados e APIs seguras em Python e Node.js.
+            </div>
+            <div className="mt-4 text-sm font-bold">A partir de 100.000 KZ/120 USD</div>
+          </div>
 
-    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
-      <div className="font-semibold">IA & Redes Neurais</div>
-      <div className="text-slate-300 mt-2 text-sm">
-        Implementação de modelos de IA, automações inteligentes e integração com RNAs.
-      </div>
-      <div className="mt-4 text-sm font-bold">A partir de 150.000 KZ/150 USD</div>
-    </div>
+          <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+            <div className="font-semibold">IA & Redes Neurais</div>
+            <div className="text-slate-300 mt-2 text-sm">
+              Implementação de modelos de IA, automações inteligentes e integração com RNAs.
+            </div>
+            <div className="mt-4 text-sm font-bold">A partir de 150.000 KZ/150 USD</div>
+          </div>
 
-    <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
-      <div className="font-semibold">Aulas de Programação</div>
-      <div className="text-slate-300 mt-2 text-sm">
-        Aulas particulares do nível básico ao profissional: lógica, web, React e back-end.
-      </div>
-      <div className="mt-4 text-sm font-bold">A partir de 3.000 KZ/h | 4 USD/h</div>
-    </div>
+          <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
+            <div className="font-semibold">Aulas de Programação</div>
+            <div className="text-slate-300 mt-2 text-sm">
+              Aulas particulares do nível básico ao profissional: lógica, web, React e back-end.
+            </div>
+            <div className="mt-4 text-sm font-bold">A partir de 3.000 KZ/h | 4 USD/h</div>
+          </div>
 
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* ABOUT */}
       <section id="about" className="max-w-6xl mx-auto px-6 py-12">
@@ -201,8 +253,8 @@ export default function PremiumPortfolio() {
           <div className="p-6 rounded-2xl bg-white/5 border border-white/6">
             <div className="font-semibold">Testemunhos</div>
             <div className="mt-4 space-y-4">
-              <blockquote className="text-slate-300 text-sm">“Rápido, comunicativo e entregou tudo no prazo. Recomendo para qualquer startup.” — Maria, CEO</blockquote>
-              <blockquote className="text-slate-300 text-sm">“O painel aumentou a produtividade da nossa equipa em 40%.” — João, CEO</blockquote>
+              <blockquote className="text-slate-300 text-sm">"Rápido, comunicativo e entregou tudo no prazo. Recomendo para qualquer startup." — Maria, CEO</blockquote>
+              <blockquote className="text-slate-300 text-sm">"O painel aumentou a produtividade da nossa equipa em 40%." — João, CEO</blockquote>
             </div>
           </div>
         </div>
@@ -213,77 +265,70 @@ export default function PremiumPortfolio() {
         <div className="p-8 rounded-2xl bg-gradient-to-br from-white/4 to-white/6 border border-white/6">
           <h3 className="text-xl font-semibold">Contacta-me</h3>
           <p className="text-slate-300 mt-2">Envie uma mensagem com uma breve descrição do projecto e eu respondo em até 24h.</p>
-<form
-  className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4"
-  onSubmit={async (e) => {
-    e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message")
-    };
+          {/* FEEDBACK VISUAL */}
+          {formStatus.message && (
+            <div className={`mt-4 p-4 rounded-lg ${
+              formStatus.type === 'success' 
+                ? 'bg-green-500/20 text-green-300 border border-green-500/30' 
+                : 'bg-red-500/20 text-red-300 border border-red-500/30'
+            }`}>
+              {formStatus.message}
+            </div>
+          )}
 
-    try {
-      const res = await fetch("http://localhost:5000/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
+          <form
+            className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+            onSubmit={handleSubmit}
+          >
+            <input
+              type="text"
+              name="name"
+              required
+              className="p-3 rounded bg-transparent border border-white/6 text-slate-100 placeholder:text-slate-400"
+              placeholder="Nome *"
+            />
 
-      const result = await res.json();
+            <input
+              type="email"
+              name="email"
+              required
+              className="p-3 rounded bg-transparent border border-white/6 text-slate-100 placeholder:text-slate-400"
+              placeholder="Email *"
+            />
 
-      if (result.success) {
-        alert("Mensagem enviada com sucesso!");
-        e.target.reset();
-      } else {
-        alert("Erro: " + result.message);
-      }
-    } catch (error) {
-      alert("Erro ao conectar com o servidor");
-      console.error(error);
-    }
-  }}
->
-  <input
-    type="text"
-    name="name"
-    required
-    className="p-3 rounded bg-transparent border border-white/6"
-    placeholder="Nome *"
-  />
+            <textarea
+              name="message"
+              required
+              className="p-3 rounded bg-transparent border border-white/6 md:col-span-2 text-slate-100 placeholder:text-slate-400"
+              placeholder="Mensagem *"
+              rows={4}
+            />
 
-  <input
-    type="email"
-    name="email"
-    required
-    className="p-3 rounded bg-transparent border border-white/6"
-    placeholder="Email *"
-  />
-
-  <textarea
-    name="message"
-    required
-    className="p-3 rounded bg-transparent border border-white/6 md:col-span-2"
-    placeholder="Mensagem *"
-    rows={4}
-  />
-
-  <div className="md:col-span-2 flex items-center gap-3">
-    <button
-      type="submit"
-      className="px-5 py-2 rounded bg-indigo-600 hover:bg-indigo-700 transition-colors"
-    >
-      Enviar mensagem
-    </button>
-    <span className="text-slate-300 text-sm">
-      Ou me chama no WhatsApp: +244 959 871 037
-    </span>
-  </div>
-</form>
+         <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-3">
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className="px-5 py-2 rounded bg-indigo-600 hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
+  </button>
+  
+  <span className="text-slate-400">ou</span>
+  
+  <a 
+    href="https://wa.me/244959871037?text=Olá%20Jorge!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 px-5 py-2 rounded bg-green-600 hover:bg-green-700 transition-colors"
+  >
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+    WhatsApp
+  </a>
+</div>
+          </form>
 
         </div>
       </section>
@@ -291,7 +336,7 @@ export default function PremiumPortfolio() {
       {/* FOOTER */}
       <footer className="max-w-6xl mx-auto px-6 py-8 text-slate-400 text-sm flex flex-col md:flex-row items-center justify-between">
         <div>© {new Date().getFullYear()} Jorge-Tanguila • Feito com foco em UX</div>
-        <div className="mt-4 md:mt-0">Made with  • React + Tailwind</div>
+        <div className="mt-4 md:mt-0">Made with ❤️ • React + Tailwind</div>
       </footer>
 
     </div>
