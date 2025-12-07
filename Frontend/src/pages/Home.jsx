@@ -336,7 +336,7 @@ export default function PremiumPortfolio() {
       {/* FOOTER */}
       <footer className="max-w-6xl mx-auto px-6 py-8 text-slate-400 text-sm flex flex-col md:flex-row items-center justify-between">
         <div>© {new Date().getFullYear()} Jorge-Tanguila • Feito com foco em UX</div>
-        <div className="mt-4 md:mt-0">Made with ❤️ • React + Tailwind</div>
+        <div className="mt-4 md:mt-0">Made with  • React + Tailwind</div>
       </footer>
 
     </div>
