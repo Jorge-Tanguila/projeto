@@ -317,7 +317,7 @@ export default function PremiumPortfolio() {
   <span className="text-slate-400">ou</span>
   
   <a 
-    href="https://wa.me/244959871037?text=Olá%20Jorge!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+    href="https://wa.me/244947322354?text=Olá%20Jorge!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
     target="_blank"
     rel="noopener noreferrer"
     className="flex items-center gap-2 px-5 py-2 rounded bg-green-600 hover:bg-green-700 transition-colors"
