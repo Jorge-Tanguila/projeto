@@ -11,28 +11,31 @@ export default function PremiumPortfolio() {
   const my_github = 'https://github.com/Jorge-Tanguila'
   
   const projects = [
-    {
-      id: 1,
-      title: 'Platforma de Reservas - Hotelify',
-      desc: 'Landing, dashboard e integração de pagamentos. Responsive, PWA-ready, analytics básico.',
-      tags: ['React', 'Node', 'Stripe', 'PWA'],
-      img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=60'
-    },
-    {
-      id: 2,
-      title: 'Painel de Vendas - MercadoSimples',
-      desc: 'Dashboard com tabelas, filtros e visualizações. Integração com API REST e auth JWT.',
-      tags: ['React', 'Tailwind', 'API'],
-      img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=60'
-    },
-    {
-      id: 3,
-      title: 'App Educacional - Aprende.js',
-      desc: 'SPA React com routes dinâmicas, quizzes e tracking de progresso do aluno.',
-      tags: ['React', 'UX', 'Accessibility'],
-      img: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1400&q=60'
-    }
-  ]
+  {
+    id: 1,
+    title: 'Platforma de Reservas - Hotelify',
+    desc: 'Landing, dashboard e integração de pagamentos. Responsive, PWA-ready, analytics básico.',
+    tags: ['React', 'Node', 'Stripe', 'PWA'],
+    img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=60',
+    demo: 'https://hotelify.vercel.app'
+  },
+  {
+    id: 2,
+    title: 'Painel de Vendas - MercadoSimples',
+    desc: 'Dashboard com tabelas, filtros e visualizações. Integração com API REST e auth JWT.',
+    tags: ['React', 'Tailwind', 'API'],
+    img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=60',
+    demo: 'https://praca-360.vercel.app/'
+  },
+  {
+    id: 3,
+    title: 'App Educacional - Aprende.js',
+    desc: 'SPA React com routes dinâmicas, quizzes e tracking de progresso do aluno.',
+    tags: ['React', 'UX', 'Accessibility'],
+    img: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1400&q=60',
+    demo: 'https://aprendejs.vercel.app'
+  }
+]
 
   const stats = [
     { label: 'Projetos', value: '24' },
@@ -181,7 +184,14 @@ export default function PremiumPortfolio() {
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">
-                  <a href="#" className="text-sm underline">Ver demo</a>
+  <a 
+  href={p.demo}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-sm underline text-cyan-300 hover:text-cyan-400"
+>
+  Ver demo
+</a>
                   <a href="#contact" className="text-sm bg-indigo-600 px-3 py-1 rounded">Contratar</a>
                 </div>
               </div>
